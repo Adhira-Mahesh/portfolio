@@ -259,7 +259,7 @@ function initTypewriter() {
 
   const roles = [
     'Full Stack Developer',
-    'MIS Portal Engineer',
+    'Creative Thinker',
     'B.Tech CS Undergrad (9.7 CGPA)',
     'Robotics & ROS 2 Enthusiast',
     'Tech Leader & Problem Solver'
