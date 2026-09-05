@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adhira Mahesh | Full Stack Developer &amp; Computer Science Undergrad</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Portfolio & Resume of Adhira Mahesh - Full Stack Developer, CS Undergrad (CGPA 9.7/10) at Pillai College of Engineering. Experienced in Next.js, React, PostgreSQL, Prisma, and ROS 2.">
+  <meta name="keywords" content="Adhira Mahesh, Full Stack Developer, Portfolio, Software Engineer, Next.js, React, PostgreSQL, ROS 2, Pillai College of Engineering">
+  <meta name="author" content="Adhira Mahesh">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Adhira Mahesh | Full Stack Developer & CS Undergrad">
+  <meta property="og:description" content="Explore Adhira Mahesh's portfolio, featured projects, experience, and direct contact.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Interactive Canvas -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Custom Cursor Elements -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Main Navigation Bar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar glass-panel" id="navbar">
+      <a href="#hero" class="nav-brand" aria-label="Adhira Mahesh Home">
+        <span class="brand-badge">&lt;AM/&gt;</span>
+        <span class="brand-name">Adhira Mahesh</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Interactive Terminal Drawer Toggle -->
+        <button id="terminal-toggle-btn" class="nav-icon-btn" title="Open Interactive Dev Terminal" aria-label="Open Dev Terminal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+        </button>
+
+        <!-- Sound FX Toggle -->
+        <button id="sound-toggle-btn" class="nav-icon-btn" title="Toggle Interactive Audio (Muted by default)" aria-label="Toggle Sound Effects">
+          <svg id="sound-icon-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <svg id="sound-icon-active" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+
+        <!-- Dark / Light Theme Toggle -->
+        <button id="theme-toggle-btn" class="nav-icon-btn theme-toggle" title="Switch Theme" aria-label="Switch Dark/Light Theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Resume Download / Print Trigger -->
+        <button id="print-resume-btn" class="btn btn-outline btn-sm print-hide" title="View &amp; Print Executive Resume" onclick="window.print()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Resume PDF</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Mobile Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Dropdown Navigation Drawer -->
+  <div id="mobile-nav" class="mobile-nav glass-panel">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#experience" class="mobile-nav-link">Experience</a>
+    <a href="#projects" class="mobile-nav-link">Projects</a>
+    <a href="#skills" class="mobile-nav-link">Skills</a>
+    <a href="#education" class="mobile-nav-link">Education</a>
+    <a href="#contact" class="mobile-nav-link">Contact Me</a>
+    <div class="mobile-nav-actions">
+      <button class="btn btn-primary btn-full" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download / Print Resume
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <!-- Availability Tag -->
+          <div class="status-badge-wrapper">
+            <span class="pulse-dot"></span>
+            <span class="status-badge-text">Open for Internships &amp; Tech Opportunities</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hey, I'm <span class="gradient-text">Adhira Mahesh</span>
+          </h1>
+
+          <div class="hero-role-line">
+            <span class="role-prefix">I am a </span>
+            <span id="typewriter" class="typewriter-text">Full Stack Developer</span>
+            <span class="typewriter-cursor">|</span>
+          </div>
+
+          <p class="hero-description">
+            Computer Science undergraduate at <strong>Pillai College of Engineering</strong> with a 
+            <strong>9.7 / 10 CGPA</strong>. Specialized in architecting production web platforms, 
+            Next.js &amp; PostgreSQL systems, event technology, and intelligent robotics simulations.
+          </p>
+
+          <!-- Quick Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary magnetic-btn">
+              <span>Explore Projects</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary magnetic-btn">
+              <span>Get in Touch</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            <button onclick="window.print()" class="btn btn-ghost magnetic-btn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              <span>Print Resume</span>
+            </button>
+          </div>
+
+          <!-- Social Quick Links -->
+          <div class="hero-socials">
+            <a href="https://github.com/Adhira-Mahesh" target="_blank" rel="noopener noreferrer" class="social-chip" title="GitHub Profile">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/adhiramahesh" target="_blank" rel="noopener noreferrer" class="social-chip" title="LinkedIn Profile">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="mailto:work.adhira.mahesh@gmail.com" class="social-chip" title="Direct Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>work.adhira.mahesh@gmail.com</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Visual / Interactive Avatar Card -->
+        <div class="hero-visual">
+          <div class="avatar-card tilt-card glass-panel" data-tilt>
+            <div class="avatar-glow-backdrop"></div>
+            <div class="avatar-img-wrap">
+              <img src="assets/avatar.svg" alt="Adhira Mahesh - Developer Avatar" class="avatar-img" width="300" height="300">
+            </div>
+
+            <!-- Floating Highlights -->
+            <div class="floating-badge badge-top-right glass-panel">
+              <span class="badge-icon">⚡</span>
+              <div>
+                <span class="badge-title">CGPA 9.7 / 10</span>
+                <span class="badge-sub">B.Tech Computer Science</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-bottom-left glass-panel">
+              <span class="badge-icon">🚀</span>
+              <div>
+                <span class="badge-title">Full Stack Intern</span>
+                <span class="badge-sub">Production MIS Portal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Ribbon -->
+      <div class="container stats-ribbon-container">
+        <div class="stats-ribbon glass-panel">
+          <div class="stat-item">
+            <div class="stat-number gradient-text" data-counter="9.7">9.7</div>
+            <div class="stat-label">CGPA (PCE Panvel)</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number gradient-text" data-counter="10">10k+</div>
+            <div class="stat-label">Virtual Tickets Processed</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number gradient-text" data-counter="120">120+</div>
+            <div class="stat-label">Festival Events Managed</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number gradient-text" data-counter="4">4+</div>
+            <div class="stat-label">Production &amp; Research Projects</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">// GET TO KNOW ME</span>
+          <h2 class="section-title">Engineering with <span class="gradient-text">Precision &amp; Passion</span></h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-bio glass-panel tilt-card" data-tilt>
+            <div class="bio-intro">
+              <p>
+                Hi! I am a <strong>Computer Science Undergraduate</strong> at Pillai College of Engineering (batch of 2024–2028). 
+                I thrive at the intersection of robust backend architectures, dynamic user interfaces, and technical leadership.
+              </p>
+              <p>
+                Currently, I am contributing to a production-grade <strong>MIS Portal</strong> deployed across the entire Pillai Group of Institutions, 
+                building resilient REST APIs with Next.js, PostgreSQL, and Prisma ORM. Beyond full-stack development, I have simulated 
+                autonomous robotics control systems using <strong>ROS 2 and CoppeliaSim</strong> and managed large-scale digital logistics 
+                for major festivals.
+              </p>
+            </div>
+
+            <div class="about-strengths-grid">
+              <div class="strength-card">
+                <div class="strength-icon">🏗️</div>
+                <div class="strength-info">
+                  <h4>Full-Stack Architecture</h4>
+                  <p>Next.js, React, PostgreSQL &amp; Prisma APIs crafted for scale.</p>
+                </div>
+              </div>
+              <div class="strength-card">
+                <div class="strength-icon">🤖</div>
+                <div class="strength-info">
+                  <h4>Robotics &amp; Control Systems</h4>
+                  <p>ROS 2 simulation, CoppeliaSim modeling &amp; PID stability tuning.</p>
+                </div>
+              </div>
+              <div class="strength-card">
+                <div class="strength-icon">👥</div>
+                <div class="strength-info">
+                  <h4>Community &amp; Leadership</h4>
+                  <p>Former GDG Technical Member, organizing workshops and tech events.</p>
+                </div>
+              </div>
+              <div class="strength-card">
+                <div class="strength-icon">🎯</div>
+                <div class="strength-info">
+                  <h4>High-Scale Execution</h4>
+                  <p>Coordinated 120+ events and 10,000+ digital attendees at Alegria.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick facts & Coordinates -->
+          <div class="about-info-col">
+            <div class="info-card glass-panel tilt-card" data-tilt>
+              <h3 class="card-title">Quick Coordinates</h3>
+              <ul class="info-list">
+                <li>
+                  <span class="info-key">Location:</span>
+                  <span class="info-val">Panvel / Navi Mumbai, India</span>
+                </li>
+                <li>
+                  <span class="info-key">Degree:</span>
+                  <span class="info-val">B.Tech in Computer Science</span>
+                </li>
+                <li>
+                  <span class="info-key">College:</span>
+                  <span class="info-val">Pillai College of Engineering</span>
+                </li>
+                <li>
+                  <span class="info-key">CGPA:</span>
+                  <span class="info-val highlight-val">9.7 / 10.0</span>
+                </li>
+                <li>
+                  <span class="info-key">Email:</span>
+                  <span class="info-val">work.adhira.mahesh@gmail.com</span>
+                </li>
+                <li>
+                  <span class="info-key">Phone:</span>
+                  <span class="info-val">+91 84519 51752</span>
+                </li>
+                <li>
+                  <span class="info-key">Status:</span>
+                  <span class="info-val highlight-green">🟢 Open to Opportunities</span>
+                </li>
+              </ul>
+
+              <div class="info-actions">
+                <a href="#contact" class="btn btn-primary btn-sm btn-full">
+                  <span>Send a Quick Message</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section experience-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">// CAREER &amp; COMMUNITY</span>
+          <h2 class="section-title">Where I've <span class="gradient-text">Made an Impact</span></h2>
+          <p class="section-desc">From production enterprise portals to robotics simulations and student community leadership.</p>
+        </div>
+
+        <!-- Experience Filter Tags -->
+        <div class="filter-pills-wrap">
+          <button class="filter-btn active" data-exp-filter="all">All Experiences</button>
+          <button class="filter-btn" data-exp-filter="engineering">Engineering</button>
+          <button class="filter-btn" data-exp-filter="leadership">Leadership &amp; Events</button>
+          <button class="filter-btn" data-exp-filter="research">Robotics Simulation</button>
+        </div>
+
+        <div class="timeline" id="experience-timeline">
+          <!-- Item 1: Full Stack Developer Intern -->
+          <div class="timeline-card glass-panel tilt-card" data-category="engineering" data-tilt>
+            <div class="timeline-header">
+              <div class="role-badge-group">
+                <span class="tag-chip tag-primary">Current Role</span>
+                <span class="tag-chip tag-accent">Production Engineering</span>
+              </div>
+              <span class="timeline-date">June 2026 – Present</span>
+            </div>
+            <h3 class="timeline-role">Full Stack Developer Intern (MIS Portal)</h3>
+            <div class="timeline-company">
+              <span class="company-name">Pillai College of Engineering</span>
+              <span class="company-location">• Panvel, India</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Contributing to a <strong>production MIS portal</strong> actively used across the entire Pillai Group of Institutions.</li>
+              <li>Architecting full-stack features using <strong>Next.js, React, PostgreSQL, and Prisma ORM</strong>.</li>
+              <li>Building robust <strong>RESTful APIs</strong>, integrating responsive frontend components, and optimizing complex database queries.</li>
+              <li>Accelerating system responsiveness and enhancing end-to-end college event management workflows.</li>
+            </ul>
+            <div class="tech-tag-row">
+              <span class="tech-pill">Next.js</span>
+              <span class="tech-pill">React</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">Prisma ORM</span>
+              <span class="tech-pill">REST APIs</span>
+            </div>
+          </div>
+
+          <!-- Item 2: GDG Technical Member -->
+          <div class="timeline-card glass-panel tilt-card" data-category="leadership" data-tilt>
+            <div class="timeline-header">
+              <div class="role-badge-group">
+                <span class="tag-chip tag-community">Community</span>
+                <span class="tag-chip tag-accent">Google Tech</span>
+              </div>
+              <span class="timeline-date">Oct. 2025 – May 2026</span>
+            </div>
+            <h3 class="timeline-role">Technical Member</h3>
+            <div class="timeline-company">
+              <span class="company-name">Google Developer Group (GDG)</span>
+              <span class="company-location">• PCE Panvel</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Organized high-impact <strong>technical workshops, hackathons, and collaborative coding sessions</strong> for 300+ students.</li>
+              <li>Collaborated on student-led open source initiatives and technical problem-solving projects.</li>
+              <li>Mentored incoming engineering juniors on modern web stacks and competitive programming.</li>
+            </ul>
+            <div class="tech-tag-row">
+              <span class="tech-pill">Workshops</span>
+              <span class="tech-pill">Community Leadership</span>
+              <span class="tech-pill">Open Source</span>
+              <span class="tech-pill">Dev Initiatives</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Alegria MIS Member -->
+          <div class="timeline-card glass-panel tilt-card" data-category="leadership" data-tilt>
+            <div class="timeline-header">
+              <div class="role-badge-group">
+                <span class="tag-chip tag-ops">Event Operations</span>
+                <span class="tag-chip tag-primary">Scale</span>
+              </div>
+              <span class="timeline-date">Dec. 2025 – Feb. 2026</span>
+            </div>
+            <h3 class="timeline-role">MIS Member — Alegria 2026</h3>
+            <div class="timeline-company">
+              <span class="company-name">Pillai College of Engineering</span>
+              <span class="company-location">• Panvel, India</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Managed real-time data flow for <strong>120+ unique festival events</strong> using the college's MIS infrastructure.</li>
+              <li>Handled <strong>10,000+ virtual tickets</strong> and registrations while safeguarding 100% data integrity and zero downtime.</li>
+              <li>Resolved synchronization and credential issues rapidly under high concurrency conditions during peak festival days.</li>
+            </ul>
+            <div class="tech-tag-row">
+              <span class="tech-pill">MIS Infrastructure</span>
+              <span class="tech-pill">10k+ Attendees</span>
+              <span class="tech-pill">High Concurrency</span>
+              <span class="tech-pill">Data Management</span>
+            </div>
+          </div>
+
+          <!-- Item 4: Robotics Simulation Intern -->
+          <div class="timeline-card glass-panel tilt-card" data-category="research engineering" data-tilt>
+            <div class="timeline-header">
+              <div class="role-badge-group">
+                <span class="tag-chip tag-robotics">Robotics</span>
+                <span class="tag-chip tag-accent">Simulation</span>
+              </div>
+              <span class="timeline-date">May 2025 – Jun. 2025</span>
+            </div>
+            <h3 class="timeline-role">Robotics Simulation Intern</h3>
+            <div class="timeline-company">
+              <span class="company-name">Pillai College of Engineering</span>
+              <span class="company-location">• Panvel, India</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Simulated a <strong>self-balancing inverted pendulum robot</strong> in virtual physics environments using <strong>ROS 2 and CoppeliaSim</strong>.</li>
+              <li>Engineered and tuned a custom <strong>PID control algorithm</strong> to analyze equilibrium stability across varied perturbations.</li>
+              <li>Visualized real-time odometry and velocity telemetry data to refine system response damping.</li>
+            </ul>
+            <div class="tech-tag-row">
+              <span class="tech-pill">ROS 2</span>
+              <span class="tech-pill">CoppeliaSim</span>
+              <span class="tech-pill">PID Control</span>
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">Simulation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">// CODE &amp; ARCHITECTURE</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-desc">Interactive web applications and algorithmic systems built with modern engineering standards.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Smart Todo Application -->
+          <div class="project-card glass-panel tilt-card" data-tilt>
+            <div class="project-banner project-banner-1">
+              <div class="project-icon-badge">⚡</div>
+              <div class="project-status">Full Stack App</div>
+            </div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3 class="project-title">Smart Todo Application</h3>
+                <div class="project-links">
+                  <a href="https://github.com/Adhira-Mahesh" target="_blank" rel="noopener noreferrer" class="icon-link" title="GitHub Repository">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <p class="project-desc">
+                Production-grade task management system built with Next.js and PostgreSQL. Implemented JWT user authentication, 
+                deadline alert dispatchers, multi-user secure task delegation, and automated task archiving.
+              </p>
+
+              <div class="project-highlights">
+                <span class="highlight-item">✓ Calendar-based task scheduling</span>
+                <span class="highlight-item">✓ Prisma relational models &amp; migrations</span>
+                <span class="highlight-item">✓ Fluid Tailwind responsive UI</span>
+              </div>
+
+              <div class="tech-tag-row">
+                <span class="tech-pill">Next.js</span>
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Prisma ORM</span>
+                <span class="tech-pill">Tailwind CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Sustainability Event Management Platform -->
+          <div class="project-card glass-panel tilt-card" data-tilt>
+            <div class="project-banner project-banner-2">
+              <div class="project-icon-badge">🌱</div>
+              <div class="project-status">Real-time Web App</div>
+            </div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3 class="project-title">Sustainability Event Platform</h3>
+                <div class="project-links">
+                  <a href="https://github.com/Adhira-Mahesh" target="_blank" rel="noopener noreferrer" class="icon-link" title="GitHub Repository">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <p class="project-desc">
+                Interactive platform connecting eco-conscious participants with sustainability initiatives. Engineered role-based 
+                access control (RBAC) across participants, organizers, and administrators with Firebase Authentication and Firestore.
+              </p>
+
+              <div class="project-highlights">
+                <span class="highlight-item">✓ Real-time Firestore synchronization</span>
+                <span class="highlight-item">✓ Strict RBAC security rules</span>
+                <span class="highlight-item">✓ Event registration &amp; ticket workflows</span>
+              </div>
+
+              <div class="tech-tag-row">
+                <span class="tech-pill">React.js</span>
+                <span class="tech-pill">Firebase Auth</span>
+                <span class="tech-pill">Cloud Firestore</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">CSS Modules</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Movie Recommendation System -->
+          <div class="project-card glass-panel tilt-card" data-tilt>
+            <div class="project-banner project-banner-3">
+              <div class="project-icon-badge">🎬</div>
+              <div class="project-status">Data Analytics &amp; ML</div>
+            </div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3 class="project-title">Movie Recommendation System</h3>
+                <div class="project-links">
+                  <a href="https://github.com/Adhira-Mahesh" target="_blank" rel="noopener noreferrer" class="icon-link" title="GitHub Repository">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <p class="project-desc">
+                Algorithmic movie recommender and analytics engine built in Python. Processed, vectorized, and filtered a dataset 
+                of 100+ titles using Pandas and NumPy, outputting genre and rating correlation heatmaps with Matplotlib.
+              </p>
+
+              <div class="project-highlights">
+                <span class="highlight-item">✓ Content-based similarity filtering</span>
+                <span class="highlight-item">✓ Trend visualization via Matplotlib</span>
+                <span class="highlight-item">✓ Fast vectorized array computations</span>
+              </div>
+
+              <div class="tech-tag-row">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">Pandas</span>
+                <span class="tech-pill">NumPy</span>
+                <span class="tech-pill">Matplotlib</span>
+                <span class="tech-pill">Data Science</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS MATRIX -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">// ARSENAL &amp; CAPABILITIES</span>
+          <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+          <p class="section-desc">Tools, languages, and frameworks I use to solve complex technical challenges.</p>
+        </div>
+
+        <!-- Skills Filter Tabs -->
+        <div class="skills-filter-nav">
+          <button class="skill-tab active" data-skill-tab="all">All Skills</button>
+          <button class="skill-tab" data-skill-tab="languages">Languages</button>
+          <button class="skill-tab" data-skill-tab="frameworks">Frameworks &amp; Web</button>
+          <button class="skill-tab" data-skill-tab="databases">Databases</button>
+          <button class="skill-tab" data-skill-tab="tools">Tools &amp; Libraries</button>
+          <button class="skill-tab" data-skill-tab="soft">Soft Skills</button>
+        </div>
+
+        <div class="skills-grid" id="skills-grid">
+          <!-- Languages -->
+          <div class="skill-item glass-panel" data-cat="languages">
+            <span class="skill-icon">☕</span>
+            <span class="skill-name">Java</span>
+            <span class="skill-badge">Core &amp; OOP</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="languages">
+            <span class="skill-icon">🐍</span>
+            <span class="skill-name">Python</span>
+            <span class="skill-badge">Data &amp; Scripting</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="languages">
+            <span class="skill-icon">⚡</span>
+            <span class="skill-name">JavaScript (ES6+)</span>
+            <span class="skill-badge">Full Stack</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="languages">
+            <span class="skill-icon">⚙️</span>
+            <span class="skill-name">C</span>
+            <span class="skill-badge">Systems</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="languages">
+            <span class="skill-icon">🗄️</span>
+            <span class="skill-name">SQL</span>
+            <span class="skill-badge">Relational Queries</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="languages">
+            <span class="skill-icon">🎨</span>
+            <span class="skill-name">HTML5 &amp; CSS3</span>
+            <span class="skill-badge">Semantic Web</span>
+          </div>
+
+          <!-- Frameworks & Web -->
+          <div class="skill-item glass-panel" data-cat="frameworks">
+            <span class="skill-icon">▲</span>
+            <span class="skill-name">Next.js</span>
+            <span class="skill-badge">SSR &amp; API Routes</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="frameworks">
+            <span class="skill-icon">⚛️</span>
+            <span class="skill-name">React.js</span>
+            <span class="skill-badge">State &amp; Hooks</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="frameworks">
+            <span class="skill-icon">💎</span>
+            <span class="skill-name">Prisma ORM</span>
+            <span class="skill-badge">Type-safe DB</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="frameworks">
+            <span class="skill-icon">🌊</span>
+            <span class="skill-name">Tailwind CSS</span>
+            <span class="skill-badge">Modern UI</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="frameworks">
+            <span class="skill-icon">🔥</span>
+            <span class="skill-name">Firebase</span>
+            <span class="skill-badge">Auth &amp; Cloud</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="frameworks">
+            <span class="skill-icon">🤖</span>
+            <span class="skill-name">ROS 2</span>
+            <span class="skill-badge">Robotics Nodes</span>
+          </div>
+
+          <!-- Databases -->
+          <div class="skill-item glass-panel" data-cat="databases">
+            <span class="skill-icon">🐘</span>
+            <span class="skill-name">PostgreSQL</span>
+            <span class="skill-badge">Production Relational</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="databases">
+            <span class="skill-icon">🐬</span>
+            <span class="skill-name">MySQL</span>
+            <span class="skill-badge">Relational DB</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="databases">
+            <span class="skill-icon">📦</span>
+            <span class="skill-name">Cloud Firestore</span>
+            <span class="skill-badge">NoSQL Real-time</span>
+          </div>
+
+          <!-- Tools & Libraries -->
+          <div class="skill-item glass-panel" data-cat="tools">
+            <span class="skill-icon">🐙</span>
+            <span class="skill-name">Git &amp; GitHub</span>
+            <span class="skill-badge">Version Control</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="tools">
+            <span class="skill-icon">💻</span>
+            <span class="skill-name">VS Code</span>
+            <span class="skill-badge">Development IDE</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="tools">
+            <span class="skill-icon">📮</span>
+            <span class="skill-name">Postman</span>
+            <span class="skill-badge">API Testing</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="tools">
+            <span class="skill-icon">🦾</span>
+            <span class="skill-name">CoppeliaSim</span>
+            <span class="skill-badge">Robotics Simulation</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="tools">
+            <span class="skill-icon">🐼</span>
+            <span class="skill-name">Pandas &amp; NumPy</span>
+            <span class="skill-badge">Data Crunching</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="tools">
+            <span class="skill-icon">📊</span>
+            <span class="skill-name">Matplotlib</span>
+            <span class="skill-badge">Data Visualization</span>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="skill-item glass-panel" data-cat="soft">
+            <span class="skill-icon">🗣️</span>
+            <span class="skill-name">Communication</span>
+            <span class="skill-badge">Technical &amp; Interpersonal</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="soft">
+            <span class="skill-icon">🤝</span>
+            <span class="skill-name">Teamwork</span>
+            <span class="skill-badge">Cross-functional</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="soft">
+            <span class="skill-icon">👑</span>
+            <span class="skill-name">Leadership</span>
+            <span class="skill-badge">GDG &amp; Event Operations</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="soft">
+            <span class="skill-icon">💡</span>
+            <span class="skill-name">Problem Solving</span>
+            <span class="skill-badge">Algorithmic &amp; Analytical</span>
+          </div>
+          <div class="skill-item glass-panel" data-cat="soft">
+            <span class="skill-icon">🔄</span>
+            <span class="skill-name">Adaptability</span>
+            <span class="skill-badge">Rapid Learning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section education-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">// ACADEMIC FOUNDATIONS</span>
+          <h2 class="section-title">Education &amp; <span class="gradient-text">Scholastic Records</span></h2>
+        </div>
+
+        <div class="education-grid">
+          <!-- College -->
+          <div class="edu-card glass-panel tilt-card" data-tilt>
+            <div class="edu-top">
+              <span class="edu-institution-badge">Engineering</span>
+              <span class="edu-years">2024 – 2028</span>
+            </div>
+            <h3 class="edu-institution">Pillai College of Engineering</h3>
+            <p class="edu-location">Panvel, Navi Mumbai, India</p>
+            <div class="edu-degree">B.Tech in Computer Science</div>
+            <div class="edu-score-pill">
+              <span class="score-icon">★</span>
+              <span>CGPA: <strong>9.7 / 10.0</strong></span>
+            </div>
+            <p class="edu-note">Consistently ranked in the top percentile of the computer science department. Active participant in technical societies and college tech initiatives.</p>
+          </div>
+
+          <!-- Class XII -->
+          <div class="edu-card glass-panel tilt-card" data-tilt>
+            <div class="edu-top">
+              <span class="edu-institution-badge">Higher Secondary</span>
+              <span class="edu-years">2022 – 2024</span>
+            </div>
+            <h3 class="edu-institution">Radcliffe Group of Schools</h3>
+            <p class="edu-location">Kharghar, Navi Mumbai, India</p>
+            <div class="edu-degree">Class XII (Senior Secondary)</div>
+            <div class="edu-score-pill">
+              <span class="score-icon">★</span>
+              <span>Percentage: <strong>90.00%</strong></span>
+            </div>
+            <p class="edu-note">Comprehensive focus on Mathematics, Physics, Chemistry, and Computer Science fundamentals.</p>
+          </div>
+
+          <!-- Class X -->
+          <div class="edu-card glass-panel tilt-card" data-tilt>
+            <div class="edu-top">
+              <span class="edu-institution-badge">Secondary</span>
+              <span class="edu-years">2010 – 2022</span>
+            </div>
+            <h3 class="edu-institution">The New Indian School</h3>
+            <p class="edu-location">Isa Town, Kingdom of Bahrain</p>
+            <div class="edu-degree">Class X (Secondary Education)</div>
+            <div class="edu-score-pill">
+              <span class="score-icon">★</span>
+              <span>Percentage: <strong>92.20%</strong></span>
+            </div>
+            <p class="edu-note">Strong international schooling foundation with academic distinctions and science competition awards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE DEVELOPER EASTER EGG TERMINAL DRAWER -->
+    <div id="terminal-drawer" class="terminal-drawer glass-panel" aria-hidden="true">
+      <div class="terminal-header">
+        <div class="terminal-controls">
+          <span class="terminal-dot close-dot" id="terminal-close-btn" title="Close Terminal"></span>
+          <span class="terminal-dot min-dot"></span>
+          <span class="terminal-dot max-dot"></span>
+        </div>
+        <div class="terminal-title">adhira@portfolio: ~ (Interactive CLI)</div>
+        <div class="terminal-actions">
+          <button id="terminal-clear-btn" class="terminal-btn-clear" title="Clear console">clear</button>
+        </div>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="terminal-line"><span class="term-green">Welcome to Adhira's interactive terminal! 🚀</span></div>
+        <div class="terminal-line">Type <span class="term-cyan">'help'</span> to see available commands or try <span class="term-cyan">'skills'</span>, <span class="term-cyan">'projects'</span>, <span class="term-cyan">'hire'</span>.</div>
+      </div>
+      <form id="terminal-form" class="terminal-input-row" autocomplete="off">
+        <span class="term-prompt">adhira@dev:~$</span>
+        <input type="text" id="terminal-input" class="terminal-input" placeholder="type a command..." spellcheck="false">
+      </form>
+    </div>
+
+    <!-- CONTACT ME SECTION -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">// LET'S CONNECT</span>
+          <h2 class="section-title">Get in <span class="gradient-text">Touch</span></h2>
+          <p class="section-desc">
+            Have an internship role, collaborative project, or exciting technical opportunity? 
+            Send a message directly through this form and it will land straight in my inbox!
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left Column: Direct Connect & Coordinates -->
+          <div class="contact-info-panel glass-panel tilt-card" data-tilt>
+            <h3 class="panel-heading">Direct Reachout</h3>
+            <p class="panel-desc">Feel free to reach out via direct email, phone, or connect on LinkedIn and GitHub.</p>
+
+            <div class="contact-card-list">
+              <!-- Email Card -->
+              <div class="contact-method-card glass-panel">
+                <div class="method-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="method-info">
+                  <span class="method-type">Email Me</span>
+                  <a href="mailto:work.adhira.mahesh@gmail.com" class="method-val">work.adhira.mahesh@gmail.com</a>
+                </div>
+                <button class="copy-btn" data-copy="work.adhira.mahesh@gmail.com" title="Copy Email">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+
+              <!-- Phone Card -->
+              <div class="contact-method-card glass-panel">
+                <div class="method-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="method-info">
+                  <span class="method-type">Call / WhatsApp</span>
+                  <a href="tel:+918451951752" class="method-val">+91 84519 51752</a>
+                </div>
+                <button class="copy-btn" data-copy="+918451951752" title="Copy Phone Number">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+
+              <!-- Social Hub Card -->
+              <div class="contact-method-card glass-panel">
+                <div class="method-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                </div>
+                <div class="method-info">
+                  <span class="method-type">Social Networks</span>
+                  <div class="social-links-inline">
+                    <a href="https://linkedin.com/in/adhiramahesh" target="_blank" rel="noopener noreferrer" class="link-tag">LinkedIn</a>
+                    <a href="https://github.com/Adhira-Mahesh" target="_blank" rel="noopener noreferrer" class="link-tag">GitHub</a>
+                    <a href="https://wa.me/918451951752" target="_blank" rel="noopener noreferrer" class="link-tag">WhatsApp</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="availability-card glass-panel">
+              <div class="avail-indicator">
+                <span class="pulse-dot"></span>
+                <span>Response Time: Usually within 24 hours</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Direct Functional Contact Form (FormSubmit AJAX) -->
+          <div class="contact-form-panel glass-panel tilt-card" data-tilt>
+            <h3 class="panel-heading">Send a Message</h3>
+            <p class="panel-desc">Fill out the details below and hit Submit — your message is dispatched straight to my inbox.</p>
+
+            <form id="contact-form" class="contact-form" novalidate>
+              <!-- Hidden configuration for FormSubmit -->
+              <input type="hidden" name="_subject" value="New Portfolio Message for Adhira Mahesh!">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+
+              <!-- Name & Email Row -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name">Your Full Name <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. John Doe" required>
+                    <span class="input-focus-border"></span>
+                  </div>
+                  <span class="field-error" id="name-error"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-email">Your Email Address <span class="required">*</span></label>
+                  <div class="input-wrapper">
+                    <input type="email" id="contact-email" name="email" class="form-input" placeholder="e.g. john@example.com" required>
+                    <span class="input-focus-border"></span>
+                  </div>
+                  <span class="field-error" id="email-error"></span>
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div class="form-group">
+                <label for="contact-subject">Subject / Purpose <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="e.g. Internship Opportunity / Collaboration" required>
+                  <span class="input-focus-border"></span>
+                </div>
+                <span class="field-error" id="subject-error"></span>
+              </div>
+
+              <!-- Message -->
+              <div class="form-group">
+                <label for="contact-message">Your Message <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <textarea id="contact-message" name="message" class="form-input form-textarea" rows="5" placeholder="Hi Adhira, I came across your portfolio and would love to connect about..." required></textarea>
+                  <span class="input-focus-border"></span>
+                </div>
+                <span class="field-error" id="message-error"></span>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="form-submit-row">
+                <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-full magnetic-btn">
+                  <span class="btn-text">Send Message Directly</span>
+                  <span class="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </span>
+                  <span class="btn-spinner hidden"></span>
+                </button>
+              </div>
+
+              <!-- Fallback Direct mailto link -->
+              <p class="form-fallback-text">
+                Prefer your mail client? <a href="mailto:work.adhira.mahesh@gmail.com?subject=Hello%20Adhira&body=Hi%20Adhira," class="subtle-link">Click here to send an email directly</a>.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <a href="#hero" class="footer-logo">&lt;AM/&gt; Adhira Mahesh</a>
+        <p class="footer-tagline">Designed &amp; engineered with aesthetic precision, clean code, and interactive passion.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-right">
+        <button id="back-to-top" class="back-to-top-btn" title="Back to top" aria-label="Back to Top">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        </button>
+        <p class="copyright">&copy; 2026 Adhira Mahesh. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="script.js"></script>
+</body>
+</html>
